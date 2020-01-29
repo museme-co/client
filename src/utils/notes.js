@@ -3,48 +3,74 @@ import { sharp, flat } from './accidentals';
 export const A = {
   value: 0,
   natural: 'A',
-  sharp: `A${sharp.htmlSymbol}`,
-  flat: `A${flat.htmlSymbol}`,
+  sharp: `A${sharp.jsSymbol}`,
+  flat: `A${flat.jsSymbol}`,
 };
 
 export const B = {
   value: 2,
   natural: 'B',
-  flat: `B${flat.htmlSymbol}`,
+  flat: `B${flat.jsSymbol}`,
 };
 
 export const C = {
   value: 3,
   natural: 'C',
-  sharp: `C${sharp.htmlSymbol}`,
+  sharp: `C${sharp.jsSymbol}`,
 };
 
 export const D = {
   value: 5,
   natural: 'D',
-  sharp: `D${sharp.htmlSymbol}`,
-  flat: `D${flat.htmlSymbol}`,
+  sharp: `D${sharp.jsSymbol}`,
+  flat: `D${flat.jsSymbol}`,
 };
 
 export const E = {
   value: 7,
   natural: 'E',
-  flat: `E${flat.htmlSymbol}`,
+  flat: `E${flat.jsSymbol}`,
 };
 
 export const F = {
   value: 8,
   natural: 'F',
-  sharp: `F${sharp.htmlSymbol}`,
+  sharp: `F${sharp.jsSymbol}`,
 };
 
 export const G = {
   value: 10,
   natural: 'G',
-  sharp: `G${sharp.htmlSymbol}`,
-  flat: `G${flat.htmlSymbol}`,
+  sharp: `G${sharp.jsSymbol}`,
+  flat: `G${flat.jsSymbol}`,
 };
 
-export const sharpMap = [A, A.sharp, B, C, C.sharp, D, D.sharp, E, F, F.sharp, G, G.sharp];
+export const sharpMap = [
+  A.natural,
+  A.sharp,
+  B.natural,
+  C.natural,
+  C.sharp,
+  D.natural,
+  D.sharp,
+  E.natural,
+  F.natural,
+  F.sharp,
+  G.natural,
+  G.sharp,
+];
 
-export const flatMap = [A, B.flat, B, C, D.flat, D, E.flat, E, F, G.flat, G, A.flat];
+export const flatMap = [
+  A.natural,
+  B.flat,
+  B.natural,
+  C.natural,
+  D.flat,
+  D.natural,
+  E.flat,
+  E.natural,
+  F.natural,
+  G.flat,
+  G.natural,
+  A.flat,
+];
