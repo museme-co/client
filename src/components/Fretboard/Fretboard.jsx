@@ -1,10 +1,11 @@
 import React from 'react';
-import String from '../String';
-import { instruments } from '../../utils';
+import FretboardString from '../FretboardString';
+import { instruments, notes } from '../../utils';
+import { number } from 'prop-types';
 
 import './Fretboard.scss';
 
-function generateFretboard(tuning = instruments.guitar, fretCount = 12) {
+function generateFretboard(tuning, fretCount) {
   return tuning.map(note => guitarString(note, fretCount));
 }
 
@@ -13,14 +14,28 @@ function guitarString(baseNote = 0, fretCount = 12) {
   return notesArray.reduce((acc, _, idx) => [...acc, (baseNote + idx) % 12], []);
 }
 
-export default function Fretboard() {
-  const notesMatrix = generateFretboard();
+function mapNotesNames(matrix) {
+  return matrix.map(stringNotes => stringNotes.map(note => notes.sharpMap[note]));
+}
+
+export default function Fretboard({ tuning, fretCount }) {
+  const notesMatrix = mapNotesNames(generateFretboard(tuning, fretCount));
 
   return (
     <div className="Fretboard">
-      {notesMatrix.map((string, idx) => (
-        <String key={idx} notesNames={string} />
+      {notesMatrix.map((stringNotes, idx) => (
+        <FretboardString key={idx} stringNotes={stringNotes} />
       ))}
     </div>
   );
 }
+
+Fretboard.propTypes = {
+  root: number,
+  fretCount: number,
+};
+
+Fretboard.defaultProps = {
+  tuning: instruments.guitar,
+  fretCount: 15,
+};
