@@ -28,9 +28,6 @@ module.exports = {
     'react/no-this-in-sfc': 0,
     'react/destructuring-assignement': 0,
     'react/jsx-one-expression-per-line': 0,
-    'jsx-a11y/click-events-have-key-events': ['off'],
-    'jsx-a11y/label-has-for': ['off'],
-    'jsx-a11y/label-has-associated-control': ['off'],
     'import/no-extraneous-dependencies': ['error', { packageDir: './' }],
 
     'prettier/prettier': 'error',
