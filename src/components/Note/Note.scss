@@ -1,0 +1,13 @@
+@import '../../styles';
+
+.Note {
+  width: $space-m;
+  height: $space-m;
+  padding: $space-s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  background-color: $blue;
+  color: $white;
+}
