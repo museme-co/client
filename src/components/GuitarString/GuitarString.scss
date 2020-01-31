@@ -1,0 +1,12 @@
+.GuitarString {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.GuitarString__stroke {
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  border-bottom: 2px solid black;
+}

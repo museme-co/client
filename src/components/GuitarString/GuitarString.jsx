@@ -2,11 +2,12 @@ import React from 'react';
 import Note from '../Note';
 import { arrayOf, string } from 'prop-types';
 
-import './FretboardString.scss';
+import './GuitarString.scss';
 
-export default function FretboardString({ stringNotes }) {
+export default function GuitarString({ stringNotes }) {
   return (
-    <div className="FretboardString">
+    <div className="GuitarString">
+      <div className="GuitarString__stroke"></div>
       {stringNotes.map(note => (
         <Note key={note} name={note} />
       ))}
@@ -14,6 +15,6 @@ export default function FretboardString({ stringNotes }) {
   );
 }
 
-FretboardString.propTypes = {
+GuitarString.propTypes = {
   stringNotes: arrayOf(string),
 };
