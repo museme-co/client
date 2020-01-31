@@ -1,30 +1,18 @@
 import React from 'react';
-import FretboardString from '../FretboardString';
-import { instruments, notes } from '../../utils';
-import { number } from 'prop-types';
+import GuitarString from '../GuitarString';
+import { instruments, scales } from '../../utils';
+import { number, arrayOf, shape } from 'prop-types';
+import { generateFretboard, mapScale, mapNotesNames } from './utils';
 
 import './Fretboard.scss';
-
-function generateFretboard(tuning, fretCount) {
-  return tuning.map(note => guitarString(note, fretCount));
-}
-
-function guitarString(baseNote = 0, fretCount = 12) {
-  const notesArray = new Array(fretCount).fill();
-  return notesArray.reduce((acc, _, idx) => [...acc, (baseNote + idx) % 12], []);
-}
-
-function mapNotesNames(matrix) {
-  return matrix.map(stringNotes => stringNotes.map(note => notes.sharpMap[note]));
-}
-
-export default function Fretboard({ tuning, fretCount }) {
-  const notesMatrix = mapNotesNames(generateFretboard(tuning, fretCount));
+export default function Fretboard({ tuning, fretCount, scale }) {
+  const allNotes = generateFretboard(tuning, fretCount);
+  const scaleNotes = mapScale(allNotes, scale.root, scale.intervals);
 
   return (
     <div className="Fretboard">
-      {notesMatrix.map((stringNotes, idx) => (
-        <FretboardString key={idx} stringNotes={stringNotes} />
+      {mapNotesNames(scaleNotes).map((stringNotes, idx) => (
+        <GuitarString key={idx} stringNotes={stringNotes} />
       ))}
     </div>
   );
@@ -33,9 +21,34 @@ export default function Fretboard({ tuning, fretCount }) {
 Fretboard.propTypes = {
   root: number,
   fretCount: number,
+  scale: shape({
+    root: number,
+    intervals: arrayOf(number),
+  }),
 };
 
 Fretboard.defaultProps = {
   tuning: instruments.guitar,
   fretCount: 15,
+  scale: {
+    root: 0,
+    intervals: scales.minorPentatonic.intervals,
+  },
 };
+
+// chromatic
+// minorPentatonic
+// majorScale
+// naturalMinor
+// minorPentatonicBlues
+// harmonicMinor
+// melodicMinor
+// minor
+// majorTriad
+// diminished
+// augmented
+// minSeven
+// majSeven
+// domSeven
+// dimSeven
+// powerChord
