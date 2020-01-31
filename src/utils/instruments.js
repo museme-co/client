@@ -1,4 +1,4 @@
-export const guitar = [7, 0, 5, 10, 2, 7];
+export const guitar = [7, 2, 10, 5, 0, 7];
 
 export const ukulele = [10, 3, 7, 0];
 
