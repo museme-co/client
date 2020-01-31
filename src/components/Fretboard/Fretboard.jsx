@@ -32,23 +32,6 @@ Fretboard.defaultProps = {
   fretCount: 15,
   scale: {
     root: 0,
-    intervals: scales.minorPentatonic.intervals,
+    intervals: scales.minorPenta.intervals,
   },
 };
-
-// chromatic
-// minorPentatonic
-// majorScale
-// naturalMinor
-// minorPentatonicBlues
-// harmonicMinor
-// melodicMinor
-// minor
-// majorTriad
-// diminished
-// augmented
-// minSeven
-// majSeven
-// domSeven
-// dimSeven
-// powerChord

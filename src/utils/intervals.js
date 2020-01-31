@@ -3,6 +3,7 @@ export const root = {
   name: 'Root',
   altDegree: 'II-',
   altName: 'Diminished Second',
+  value: 0,
 };
 
 export const minorSecond = {
@@ -10,6 +11,7 @@ export const minorSecond = {
   name: 'Minor Second',
   altDegree: 'I+',
   altName: 'Augmented Root',
+  value: 1,
 };
 
 export const majorSecond = {
@@ -17,6 +19,7 @@ export const majorSecond = {
   name: 'Major Second',
   altDegree: 'III-',
   altName: 'Diminished Third',
+  value: 2,
 };
 
 export const minorThird = {
@@ -24,6 +27,7 @@ export const minorThird = {
   name: 'Minor Third',
   altDegree: 'II+',
   altName: 'Augmented Second',
+  value: 3,
 };
 
 export const majorThird = {
@@ -31,6 +35,7 @@ export const majorThird = {
   name: 'Major Third',
   altDegree: 'IV-',
   altName: 'Diminished Fourth',
+  value: 4,
 };
 
 export const perfectFourth = {
@@ -38,6 +43,7 @@ export const perfectFourth = {
   name: 'Perfect Fourth',
   altDegree: 'III+',
   altName: 'Augmented Third',
+  value: 5,
 };
 
 export const diminishedFifth = {
@@ -45,6 +51,7 @@ export const diminishedFifth = {
   name: 'Diminished Fifth',
   altDegree: 'IV+',
   altName: 'Augmented Fourth',
+  value: 6,
 };
 
 export const perfectFifth = {
@@ -52,6 +59,7 @@ export const perfectFifth = {
   name: 'Perfect Fifth',
   altDegree: 'VI-',
   altName: 'Diminished Sixth',
+  value: 7,
 };
 
 export const minorSixth = {
@@ -59,6 +67,7 @@ export const minorSixth = {
   name: 'Minor Sixth',
   altDegree: 'V+',
   altName: 'Augmented Fifth',
+  value: 8,
 };
 
 export const majorSixth = {
@@ -66,6 +75,7 @@ export const majorSixth = {
   name: 'Major Sixth',
   altDegree: 'VII-',
   altName: 'Diminished Seventh',
+  value: 9,
 };
 
 export const minorSeventh = {
@@ -73,6 +83,7 @@ export const minorSeventh = {
   name: 'Minor Seventh',
   altDegree: 'VI+',
   altName: 'Augmented Sixth',
+  value: 10,
 };
 
 export const majorSeventh = {
@@ -80,6 +91,7 @@ export const majorSeventh = {
   name: 'Major Seventh',
   altDegree: 'I-',
   altName: 'Diminished Octave',
+  value: 11,
 };
 
 export const degreeMap = [
