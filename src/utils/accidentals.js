@@ -15,3 +15,13 @@ export const sharp = new (function() {
   this.jsSymbol = String.fromCharCode(parseInt(this.charcode));
   this.value = 1;
 })();
+
+export const noteAccidentals = {
+  A: ['natural', 'flat'],
+  B: ['natural', 'flat'],
+  C: ['flat', 'natural', 'sharp'],
+  D: ['natural', 'flat'],
+  E: ['natural', 'flat'],
+  F: ['natural', 'sharp'],
+  G: ['natural', 'flat'],
+};
