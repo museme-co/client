@@ -18,6 +18,18 @@ export function mapScale(matrix, root, intervals) {
   );
 }
 
-export function mapNotesNames(matrix) {
-  return matrix.map(stringNotes => stringNotes.map(note => notes.sharpMap[note]));
+export function mapNotesNames(matrix, accidentalMap) {
+  return matrix.map(stringNotes =>
+    stringNotes.map(note => {
+      switch (accidentalMap) {
+        case 'sharp':
+        case 'natural':
+          return notes.sharpMap[note];
+        case 'flat':
+          return notes.flatMap[note];
+        default:
+          return new Error('The accidental map must be one of "flat", "natural", or "sharp"');
+      }
+    }),
+  );
 }
