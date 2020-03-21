@@ -1,21 +1,29 @@
 import React from 'react';
+import { number, arrayOf, string } from 'prop-types';
+
 import GuitarString from '../GuitarString';
-import { instruments, scales } from '../../utils';
-import { number, arrayOf } from 'prop-types';
+import music from '../../utils/music';
+
 import { generateFretboard, mapScale, mapNotesNames } from './utils';
 
 import './Fretboard.scss';
 
 export default function Fretboard({ tuning, fretCount, root, accidental, intervals }) {
   const allNotes = generateFretboard(tuning, fretCount);
-  const scaleNotes = mapScale(allNotes, root + accidental, intervals);
 
-  // TODO automate accidental display according to scale
-  const accidentalDisplay = 'sharp';
+  const accidentalValue = music.accidentals[accidental].value;
+  const rootValue = (root + accidentalValue + 12) % 12;
+
+  const accidentalMap =
+    accidental === 'natural'
+      ? music.accidentals.scalesAccidentalsMaps[rootValue]
+      : music.accidentals.scalesAccidentalsMaps[rootValue][accidental];
+
+  const scaleNotes = mapScale(allNotes, rootValue, intervals);
 
   return (
     <div className="Fretboard">
-      {mapNotesNames(scaleNotes, accidentalDisplay).map((stringNotes, idx) => (
+      {mapNotesNames(scaleNotes, accidentalMap).map((stringNotes, idx) => (
         <GuitarString key={idx} stringNotes={stringNotes} />
       ))}
     </div>
@@ -24,16 +32,16 @@ export default function Fretboard({ tuning, fretCount, root, accidental, interva
 
 Fretboard.propTypes = {
   root: number,
-  accidental: number,
+  accidental: string,
   fretCount: number,
   tuning: arrayOf(number),
   intervals: arrayOf(number),
 };
 
 Fretboard.defaultProps = {
-  tuning: instruments.guitar,
+  tuning: music.instruments.guitar,
   fretCount: 15,
   root: 0,
-  accidental: 0,
-  intervals: scales.minorPenta.intervals,
+  accidental: 'natural',
+  intervals: music.scales.minorPenta.intervals,
 };

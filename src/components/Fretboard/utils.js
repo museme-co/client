@@ -1,8 +1,11 @@
-import { notes, instruments } from '../../utils';
+import music from '../../utils/music';
 
 const DEFAULT_FRETCOUNT = 15;
 
-export function generateFretboard(tuning = instruments.guitar, fretCount = DEFAULT_FRETCOUNT) {
+export function generateFretboard(
+  tuning = music.instruments.guitar,
+  fretCount = DEFAULT_FRETCOUNT,
+) {
   return tuning.map(note => guitarString(note, fretCount));
 }
 
@@ -20,16 +23,6 @@ export function mapScale(matrix, root, intervals) {
 
 export function mapNotesNames(matrix, accidentalMap) {
   return matrix.map(stringNotes =>
-    stringNotes.map(note => {
-      switch (accidentalMap) {
-        case 'sharp':
-        case 'natural':
-          return notes.sharpMap[note];
-        case 'flat':
-          return notes.flatMap[note];
-        default:
-          return new Error('The accidental map must be one of "flat", "natural", or "sharp"');
-      }
-    }),
+    stringNotes.map(noteValue => music.notes[accidentalMap][noteValue]),
   );
 }
