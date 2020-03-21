@@ -1,9 +1,3 @@
-import * as arpeggios_ from './arpeggios';
-import * as triads_ from './triads';
-
-export const arpeggios = arpeggios_;
-export const triads = triads_;
-
 export const chromatic = {
   name: 'Chromatic',
   intervals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
