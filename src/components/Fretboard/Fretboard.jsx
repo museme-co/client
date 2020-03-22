@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { number, arrayOf, string } from 'prop-types';
 
 import GuitarString from '../GuitarString';
@@ -9,21 +9,20 @@ import { generateFretboard, mapScale, mapNotesNames } from './utils';
 import './Fretboard.scss';
 
 export default function Fretboard({ tuning, fretCount, root, accidental, intervals }) {
-  const allNotes = generateFretboard(tuning, fretCount);
+  const matrix = useMemo(() => generateFretboard(tuning, fretCount), [tuning, fretCount]);
 
   const accidentalValue = music.accidentals[accidental].value;
   const rootValue = (root + accidentalValue + 12) % 12;
-
   const accidentalMap =
     accidental === 'natural'
       ? music.accidentals.scalesAccidentalsMaps[rootValue]
       : music.accidentals.scalesAccidentalsMaps[rootValue][accidental];
 
-  const scaleNotes = mapScale(allNotes, rootValue, intervals);
+  const scaleMatrix = mapScale(matrix, rootValue, intervals);
 
   return (
     <div className="Fretboard">
-      {mapNotesNames(scaleNotes, accidentalMap).map((stringNotes, idx) => (
+      {mapNotesNames(scaleMatrix, accidentalMap).map((stringNotes, idx) => (
         <GuitarString key={idx} stringNotes={stringNotes} />
       ))}
     </div>

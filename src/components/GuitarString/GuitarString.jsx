@@ -9,7 +9,7 @@ export default function GuitarString({ stringNotes }) {
     <div className="GuitarString">
       <div className="GuitarString__stroke"></div>
       {stringNotes.map((note, idx) => (
-        <Note key={`${note}-${idx}`} name={note} />
+        <Note key={`${note || '-'}-${idx}`} name={note} />
       ))}
     </div>
   );

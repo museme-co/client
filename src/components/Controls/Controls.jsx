@@ -9,15 +9,15 @@ export default function Controls({ root, setRoot, accidental, setAccidental, sca
     <div className="Controls">
       <select
         value={root}
-        onChange={e => {
-          setRoot(e.currentTarget.value);
+        onChange={({ currentTarget }) => {
+          setRoot(currentTarget.value);
         }}
       >
         {Object.entries(music.notes).map(
-          ([key, val]) =>
-            val.natural && (
+          ([key, { natural }]) =>
+            natural && (
               <option key={key} value={key}>
-                {val.natural}
+                {natural}
               </option>
             ),
         )}
@@ -25,8 +25,8 @@ export default function Controls({ root, setRoot, accidental, setAccidental, sca
 
       <select
         value={accidental}
-        onChange={e => {
-          setAccidental(e.currentTarget.value);
+        onChange={({ currentTarget }) => {
+          setAccidental(currentTarget.value);
         }}
       >
         <option value="natural">-</option>
@@ -37,12 +37,17 @@ export default function Controls({ root, setRoot, accidental, setAccidental, sca
         ))}
       </select>
 
-      <select value={scale} onChange={e => setScale(e.currentTarget.value)}>
+      <select
+        value={scale}
+        onChange={({ currentTarget }) => {
+          setScale(currentTarget.value);
+        }}
+      >
         {Object.entries(music.scales).map(
-          ([key, val]) =>
-            val.name && (
-              <option key={val.name} value={key}>
-                {val.name}
+          ([key, { name }]) =>
+            name && (
+              <option key={name} value={key}>
+                {name}
               </option>
             ),
         )}

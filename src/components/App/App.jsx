@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Fretboard from '../Fretboard';
 import Controls from '../Controls';
 import music from '../../utils/music';
@@ -11,6 +11,10 @@ export default function App() {
   const [scale, setScale] = useState('minorPenta');
 
   const rootValue = music.notes[root].value;
+
+  useEffect(() => {
+    setAccidental('natural');
+  }, [root]);
 
   return (
     <div className="App">
