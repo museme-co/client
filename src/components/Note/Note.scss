@@ -1,0 +1,29 @@
+@import '../../styles';
+
+.Fret {
+  width: 64px;
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: black;
+  display: flex;
+  justify-content: center;
+
+  .Note {
+    width: $space-l;
+    height: $space-l;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+
+    z-index: 5;
+
+    background-color: $lightest-grey;
+    color: $white;
+  }
+  .Note--active {
+    @extend .Note;
+    background-color: $blue;
+  }
+}
