@@ -1,0 +1,14 @@
+@import '../../styles';
+
+.Tabs {
+  .Tabs__tile {
+    display: flex;
+    justify-content: space-between;
+
+    background-color: $lightest-grey;
+    color: $white;
+    .active {
+      color: $blue;
+    }
+  }
+}

@@ -4,7 +4,15 @@ import music from '../../utils/music';
 
 import './Controls.scss';
 
-export default function Controls({ root, setRoot, accidental, setAccidental, scale, setScale }) {
+export default function Controls({
+  root,
+  setRoot,
+  accidental,
+  setAccidental,
+  scale,
+  setScale,
+  scaleType,
+}) {
   return (
     <div className="Controls">
       <select
@@ -30,7 +38,7 @@ export default function Controls({ root, setRoot, accidental, setAccidental, sca
         }}
       >
         <option value="natural">-</option>
-        {music.accidentals.noteAccidentals[root].map(val => (
+        {music.accidentals.noteAccidentals[root].map((val) => (
           <option key={val} value={val}>
             {music.accidentals[val].jsSymbol}
           </option>
@@ -43,7 +51,8 @@ export default function Controls({ root, setRoot, accidental, setAccidental, sca
           setScale(currentTarget.value);
         }}
       >
-        {Object.entries(music.scales).map(
+
+        {Object.entries(music[scaleType]).map(
           ([key, { name }]) =>
             name && (
               <option key={name} value={key}>
@@ -61,4 +70,8 @@ Controls.propTypes = {
   scale: string,
   setScale: func,
   setRoot: func,
+};
+
+Controls.defaultProps = {
+  scaleType: 'scales',
 };
